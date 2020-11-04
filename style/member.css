@@ -32,7 +32,6 @@
 .member-id,
 .member-password {
   position: relative;
-  border-bottom: 1px solid currentColor;
   height: 48px;
 }
 .member-id label,
@@ -41,6 +40,7 @@
   left: 0.5em;
   top: 15px;
   font-size: 1.8rem;
+  transition: all 0.2s;
 }
 .member-id {
   margin-bottom: 30px;
@@ -51,20 +51,74 @@
 .member-id input,
 .member-password input {
   width: 100%;
-  height: 100%;
+  height: 48px;
   background: transparent;
   border: 0;
   color: #fff;
   padding: 0 1em;
+  border-bottom: 1px solid currentColor;
 }
 .member-id--error,
-.member-password--error,
-.button-password {
+.member-password--error {
   display: none;
 }
+
+.member-form .button-password {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 15px;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+/* 공통 멤버 폼 상태 디자인 */
+.is--focus label,
+.is--valid label,
+.is--invalid label {
+  font-size: 1.3rem;
+  transform: translate(-0.5em, -15px);
+}
+.member-form .is--invalid [role='alert'] {
+  display: block;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  margin-top: 5px;
+}
+.member-form .is--valid,
+.member-form .is--invalid {
+  background-repeat: no-repeat;
+  background-position: 100% 20px;
+}
+.member-form .is--valid {
+  background-image: url(../images/icon-checked.svg);
+}
+.member-form .is--invalid {
+  height: 70px;
+  background-image: url(../images/icon-warning.svg);
+}
+.is--focus .button-password {
+  display: block;
+}
+.member-form .button-password .ir {
+  display: block;
+  width: inherit;
+  height: inherit;
+  background: url(../images/icon-visible.svg) no-repeat 50% 50%;
+}
+
+.member-form .is--visible .button-password .ir {
+  background-image: url(../images/icon-invisible.svg);
+}
+.member-form .is--invalid .button-password {
+  right: 20px;
+}
+
 /* 공통 이메일 저장 */
 .save-email {
-  /* background-color: darkblue; */
   position: relative;
   display: flex;
   flex-flow: row nowrap;
